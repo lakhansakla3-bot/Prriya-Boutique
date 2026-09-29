@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Priya Boutique — Bairagarh, Bhopal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --maroon: #6b1e3c;
+    --maroon-deep: #4a1329;
+    --gold: #c9a15a;
+    --ivory: #f2e4cd;
+    --blush: #f1dfe2;
+    --ink: #2a2020;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); height: 100%; color-scheme: light; }
+  body {
+    margin: 0;
+    background: var(--ivory);
+    color: var(--ink);
+    font-family: 'Work Sans', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100%;
+  }
+  h1, h2, h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    margin: 0;
+    color: var(--maroon-deep);
+  }
+  a { color: inherit; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header {
+    padding: 18px 0 14px;
+    border-bottom: 1px solid rgba(107,30,60,0.12);
+  }
+  .brandbar { display: flex; align-items: center; justify-content: space-between; }
+  .brandname { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--maroon-deep); letter-spacing: 0.02em; }
+  .rating-chip {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--maroon); color: var(--ivory);
+    padding: 5px 12px; border-radius: 4px; font-size: 13px; font-weight: 500;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 56px 0 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    right: -60px; top: -80px;
+    width: 260px; height: 260px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    opacity: 0.5;
+  }
+  .hero-eyebrow {
+    font-size: 14px; color: var(--maroon); margin-bottom: 10px;
+  }
+  .hero-art {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    display: block;
+    margin: 0 0 28px;
+  }
+  .hero h1 {
+    font-size: clamp(40px, 9vw, 58px);
+    line-height: 1.05;
+    max-width: 11ch;
+  }
+  .hero p.lede {
+    margin-top: 18px;
+    max-width: 42ch;
+    font-size: 17px;
+    color: #4a3a3a;
+  }
+  .hero-meta {
+    margin-top: 26px;
+    display: flex; flex-wrap: wrap; gap: 10px 22px;
+    font-size: 14px; color: var(--maroon-deep);
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 6px; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: #3a8a4a; display: inline-block; }
+
+  .cta-row { margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 22px; border-radius: 3px;
+    font-size: 15px; font-weight: 500; text-decoration: none;
+    border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--maroon); color: var(--ivory); }
+  .btn-secondary { background: transparent; color: var(--maroon-deep); border-color: var(--maroon-deep); }
+
+  /* Section: about */
+  section { padding: 44px 0; }
+  .rule { border: none; border-top: 1px solid rgba(107,30,60,0.15); margin: 0; }
+  .about h2 { font-size: 28px; margin-bottom: 14px; }
+  .about p { max-width: 58ch; color: #4a3a3a; }
+
+  /* Services */
+  .services h2 { font-size: 28px; margin-bottom: 20px; }
+  .service-list { list-style: none; margin: 0; padding: 0; }
+  .service-list li {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(107,30,60,0.12);
+    display: flex; align-items: center; gap: 16px;
+  }
+  .service-list li:first-child { border-top: 1px solid rgba(107,30,60,0.12); }
+  .service-icon { flex: none; width: 30px; height: 30px; }
+  .service-text { flex: 1 1 auto; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .service-name { font-size: 18px; }
+  .service-note { font-size: 13px; color: #8a7373; text-align: right; }
+
+  /* Reviews */
+  .gallery h2 { font-size: 28px; margin-bottom: 20px; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .gallery-card {
+    background: var(--blush);
+    border-radius: 4px;
+    padding: 18px 14px 14px;
+    text-align: center;
+  }
+  .gallery-card svg { width: 100%; height: 100px; display: block; margin: 0 auto 10px; }
+  .gallery-card span { font-size: 13px; color: var(--maroon-deep); }
+
+  .reviews h2 { font-size: 28px; margin-bottom: 16px; }
+  .review-card {
+    background: var(--blush);
+    padding: 20px 22px;
+    border-radius: 4px;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .review-card .stars { color: var(--maroon); font-size: 14px; margin-bottom: 8px; letter-spacing: 2px; }
+
+  /* Visit */
+  .visit h2 { font-size: 28px; margin-bottom: 16px; }
+  .visit-grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
+  .visit-block dt { font-size: 13px; color: #8a7373; margin-bottom: 4px; }
+  .visit-block dd { margin: 0; font-size: 16px; }
+  .hours-open { color: #3a8a4a; font-weight: 500; }
+
+  footer {
+    padding: 28px 0 40px;
+    font-size: 13px; color: #8a7373;
+    border-top: 1px solid rgba(107,30,60,0.12);
+  }
+
+  @media (min-width: 560px) {
+    .visit-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brandbar">
+        <div class="brandname">Priya Boutique</div>
+        <div class="rating-chip">★ 4.8 · 8 reviews</div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-eyebrow">Women's boutique · Bairagarh, Bhopal</div>
+      <svg class="hero-art" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Draped fabric with paisley trim">
+        <path d="M0 40 C 60 10, 120 70, 180 30 S 300 10, 320 40 L 320 140 L 0 140 Z" fill="var(--blush)"/>
+        <path d="M0 60 C 70 30, 130 90, 190 50 S 300 30, 320 60" fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.8"/>
+        <g fill="var(--maroon)">
+          <path d="M40 95 c 6 -14 22 -14 22 0 c 0 10 -11 14 -11 22 c 0 -8 -11 -12 -11 -22 z" opacity="0.9"/>
+          <path d="M140 108 c 5 -11 18 -11 18 0 c 0 8 -9 11 -9 18 c 0 -7 -9 -10 -9 -18 z" opacity="0.7"/>
+          <path d="M230 92 c 6 -14 22 -14 22 0 c 0 10 -11 14 -11 22 c 0 -8 -11 -12 -11 -22 z" opacity="0.9"/>
+        </g>
+        <circle cx="90" cy="35" r="2.5" fill="var(--gold)"/>
+        <circle cx="200" cy="20" r="2.5" fill="var(--gold)"/>
+        <circle cx="270" cy="45" r="2.5" fill="var(--gold)"/>
+      </svg>
+      <h1>Tailored for the way you actually wear it.</h1>
+      <p class="lede">Seventeen years of stitching, altering and dressing Bairagarh — from everyday kurtis to wedding blouses, made to fit.</p>
+      <div class="hero-meta">
+        <span><span class="dot"></span>Open daily, 10 am – 10 pm</span>
+        <span>Opposite Girls School Community Hall, Main Road</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+919754053282">Call +91 97540 53282</a>
+        <a class="btn btn-secondary" href="https://wa.me/919754053282" target="_blank" rel="noopener">Message on WhatsApp</a>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <section class="about">
+      <h2>About the shop</h2>
+      <p>Priya Boutique has been part of Bairagarh's Main Road for 17 years, known locally for its women's wear, custom tailoring and quick alterations. It's a small, personal shop — the kind where the person measuring your blouse remembers your last order.</p>
+    </section>
+
+    <hr class="rule">
+
+    <section class="services">
+      <h2>What we do</h2>
+      <ul class="service-list">
+        <li>
+          <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="var(--maroon)" stroke-width="1.6" stroke-linecap="round"><path d="M6 26 C 10 16, 18 16, 26 8"/><circle cx="26" cy="8" r="2" fill="var(--maroon)" stroke="none"/><path d="M9 23 l3 3 M13 19 l3 3" stroke-width="1.2"/></svg>
+          <span class="service-text"><span class="service-name">Custom blouse stitching</span><span class="service-note">Bring your own fabric</span></span>
+        </li>
+        <li>
+          <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="var(--maroon)" stroke-width="1.6" stroke-linecap="round"><path d="M8 8 L24 24 M24 8 L8 24"/><circle cx="8" cy="8" r="2.4"/><circle cx="8" cy="24" r="2.4"/></svg>
+          <span class="service-text"><span class="service-name">Kurti &amp; suit tailoring</span><span class="service-note">Ready-made &amp; made-to-order</span></span>
+        </li>
+        <li>
+          <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="var(--maroon)" stroke-width="1.6" stroke-linecap="round"><path d="M7 25 L22 10"/><path d="M17 6 l9 9-4 4-9-9z" fill="var(--blush)"/></svg>
+          <span class="service-text"><span class="service-name">Alterations</span><span class="service-note">Same-day for simple fixes</span></span>
+        </li>
+        <li>
+          <svg class="service-icon" viewBox="0 0 32 32" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 6 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z"/></svg>
+          <span class="service-text"><span class="service-name">Wedding &amp; occasion wear</span><span class="service-note">Book ahead in season</span></span>
+        </li>
+      </ul>
+    </section>
+
+    <hr class="rule">
+
+    <section class="gallery">
+      <h2>A peek inside</h2>
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <svg viewBox="0 0 100 100" fill="none"><path d="M38 14 L30 24 L34 30 L38 26 L38 82 L62 82 L62 26 L66 30 L70 24 L62 14 C 58 20 42 20 38 14 Z" fill="var(--maroon)" opacity="0.85"/><circle cx="50" cy="17" r="3" fill="var(--gold)"/></svg>
+          <span>Kurtis</span>
+        </div>
+        <div class="gallery-card">
+          <svg viewBox="0 0 100 100" fill="none"><path d="M20 20 C 40 30, 40 50, 20 65 C 45 70, 70 60, 78 30 C 60 40, 45 30, 20 20 Z" fill="var(--maroon)" opacity="0.85"/><path d="M22 22 C 42 32, 42 50, 22 64" stroke="var(--gold)" stroke-width="1.4" fill="none"/></svg>
+          <span>Sarees</span>
+        </div>
+        <div class="gallery-card">
+          <svg viewBox="0 0 100 100" fill="none"><path d="M30 20 L20 30 L26 42 L34 36 L34 78 L66 78 L66 36 L74 42 L80 30 L70 20 C 66 14 34 14 30 20 Z" fill="var(--maroon)" opacity="0.85"/><path d="M42 20 L42 34 M58 20 L58 34" stroke="var(--gold)" stroke-width="1.2"/></svg>
+          <span>Blouses</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <section class="reviews">
+      <h2>What Bairagarh says</h2>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        4.8 out of 5, from 8 customers on Justdial.
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <section class="visit">
+      <h2>Visit</h2>
+      <dl class="visit-grid">
+        <div class="visit-block">
+          <dt>Address</dt>
+          <dd>Opposite Girls School Community Hall, Main Road,<br>Bairagarh, Bhopal – 462030, Madhya Pradesh</dd>
+        </div>
+        <div class="visit-block">
+          <dt>Hours</dt>
+          <dd class="hours-open">Open daily, 10 am – 10 pm</dd>
+        </div>
+        <div class="visit-block">
+          <dt>Phone</dt>
+          <dd><a href="tel:+919754053282">+91 97540 53282</a></dd>
+        </div>
+        <div class="visit-block">
+          <dt>WhatsApp</dt>
+          <dd><a href="https://wa.me/919754053282" target="_blank" rel="noopener">Chat now</a></dd>
+        </div>
+      </dl>
+    </section>
+
+    <footer>
+      Priya Boutique · Bairagarh, Bhopal · 17 years in business
+    </footer>
+  </div>
+</body>
+</html>
